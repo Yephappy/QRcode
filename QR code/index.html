@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QR Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <h1>Generador QR</h1>
+      <p>Escribe un texto o URL y genera tu código QR. Puedes descargarlo como PNG.</p>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <label class="label" for="text">Contenido</label>
+        <textarea id="text" rows="4" placeholder="https://example.com o cualquier texto..."></textarea>
+
+        <div class="row">
+          <div class="field">
+            <label class="label" for="size">Tamaño (px)</label>
+            <input id="size" type="number" min="128" max="1024" step="16" value="320" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="ecc">Corrección (ECC)</label>
+            <select id="ecc">
+              <option value="L">L (7%)</option>
+              <option value="M" selected>M (15%)</option>
+              <option value="Q">Q (25%)</option>
+              <option value="H">H (30%)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label class="label" for="fg">Color (QR)</label>
+            <input id="fg" type="color" value="#111111" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="bg">Fondo</label>
+            <input id="bg" type="color" value="#ffffff" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="btnGenerate" class="primary">Generar</button>
+          <button id="btnDownload">Descargar PNG</button>
+          <button id="btnClear" class="ghost">Limpiar</button>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="card preview">
+        <div class="previewTop">
+          <h2>Preview</h2>
+          <span class="hint">Tip: URLs cortas = QR más “limpio”.</span>
+        </div>
+        <div id="qrBox" class="qrBox" aria-label="Código QR generado"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Hecho con HTML/CSS/JS — listo para GitHub Pages.</span>
+    </footer>
+  </main>
+
+  <!-- Librería QR (sin build). Si prefieres, puedes bajarla y ponerla en /vendor -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
